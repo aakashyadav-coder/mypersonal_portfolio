@@ -27,7 +27,7 @@ export default function Home() {
       <Navbar />
 
       {/* Main content */}
-      <main className="cursor-none md:cursor-none">
+      <main>
         <Hero />
         <About />
         <Skills />

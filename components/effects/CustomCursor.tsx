@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
+  const [position, setPosition]   = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible]   = useState(false);
+  const [isDesktop, setIsDesktop]   = useState(false);
 
   useEffect(() => {
-    // Only show on desktop
     if (window.innerWidth < 768) return;
+    setIsDesktop(true);
 
     const handleMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -19,11 +20,9 @@ export default function CustomCursor() {
 
     const handleOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isInteractive =
-        target.closest("a") ||
-        target.closest("button") ||
-        target.closest("[data-cursor='pointer']");
-      setIsHovering(!!isInteractive);
+      setIsHovering(
+        !!(target.closest("a") || target.closest("button") || target.closest("[data-cursor='pointer']"))
+      );
     };
 
     const handleLeave = () => setIsVisible(false);
@@ -42,27 +41,48 @@ export default function CustomCursor() {
     };
   }, [isVisible]);
 
+  if (!isDesktop) return null;
+
   return (
     <>
       {/* Outer ring */}
       <motion.div
-        className="custom-cursor-dot fixed top-0 left-0 rounded-full border border-brand-red z-[9999] hidden md:block"
-        style={{ x: position.x - 20, y: position.y - 20 }}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          borderRadius: "50%",
+          border: "1px solid rgba(225,29,72,0.5)",
+          pointerEvents: "none",
+          zIndex: 9999,
+          x: position.x - 20,
+          y: position.y - 20,
+          mixBlendMode: "difference",
+        }}
         animate={{
-          width: isHovering ? 48 : 40,
-          height: isHovering ? 48 : 40,
-          opacity: isVisible ? 1 : 0,
+          width:       isHovering ? 48 : 40,
+          height:      isHovering ? 48 : 40,
+          opacity:     isVisible ? 1 : 0,
           borderColor: isHovering ? "#E11D48" : "rgba(225,29,72,0.5)",
         }}
         transition={{ type: "spring", stiffness: 400, damping: 25, mass: 0.3 }}
       />
       {/* Inner dot */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full bg-brand-red z-[9999] hidden md:block"
-        style={{ x: position.x - 4, y: position.y - 4 }}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          borderRadius: "50%",
+          backgroundColor: "#E11D48",
+          pointerEvents: "none",
+          zIndex: 9999,
+          x: position.x - 4,
+          y: position.y - 4,
+        }}
         animate={{
-          width: isHovering ? 6 : 8,
-          height: isHovering ? 6 : 8,
+          width:   isHovering ? 6 : 8,
+          height:  isHovering ? 6 : 8,
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ type: "spring", stiffness: 600, damping: 30, mass: 0.1 }}
