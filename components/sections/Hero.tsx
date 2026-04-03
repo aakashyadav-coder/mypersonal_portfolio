@@ -168,8 +168,8 @@ export default function Hero() {
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(3rem, 8vw, 6rem)",
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
+              fontWeight: 800,
+              letterSpacing: "-0.03em",
               lineHeight: 1.05,
             }}
           >
@@ -183,10 +183,11 @@ export default function Hero() {
           <motion.div
             variants={itemVariants}
             style={{
-              marginTop: "1.5rem",
+              marginTop: "1.25rem",
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
-              fontWeight: 700,
+              fontSize: "clamp(1.35rem, 3.5vw, 2.25rem)",
+              fontWeight: 600,
+              letterSpacing: "-0.01em",
             }}
           >
             <TypewriterText texts={roles} />
@@ -196,13 +197,14 @@ export default function Hero() {
           <motion.p
             variants={itemVariants}
             style={{
-              marginTop: "1.75rem",
+              marginTop: "1.5rem",
               color: "#A1A1AA",
-              fontSize: "1.125rem",
-              maxWidth: "600px",
+              fontSize: "1.05rem",
+              maxWidth: "580px",
               marginLeft: "auto",
               marginRight: "auto",
-              lineHeight: 1.8,
+              lineHeight: 1.75,
+              fontFamily: "var(--font-sans)",
             }}
           >
             Crafting{" "}

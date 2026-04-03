@@ -62,7 +62,7 @@ export function SectionHeading({
     <motion.div
       variants={fadeUpVariants}
       style={{
-        marginBottom: "4rem",
+        marginBottom: "2.5rem",
         textAlign: center ? "center" : "left",
       }}
     >
@@ -70,16 +70,16 @@ export function SectionHeading({
         <span
           style={{
             display: "inline-block",
-            marginBottom: "1rem",
-            padding: "0.375rem 1rem",
+            marginBottom: "0.875rem",
+            padding: "0.3rem 0.875rem",
             borderRadius: "9999px",
-            fontSize: "0.7rem",
-            fontWeight: 600,
-            letterSpacing: "0.1em",
+            fontSize: "0.68rem",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
             textTransform: "uppercase" as const,
-            border: "1px solid rgba(225,29,72,0.3)",
+            border: "1px solid rgba(225,29,72,0.35)",
             color: "#E11D48",
-            background: "rgba(225,29,72,0.05)",
+            background: "rgba(225,29,72,0.06)",
           }}
         >
           {badge}
@@ -88,10 +88,11 @@ export function SectionHeading({
       <h2
         style={{
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(2rem, 4vw, 3rem)",
+          fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
           fontWeight: 700,
           color: "#fff",
-          lineHeight: 1.2,
+          lineHeight: 1.15,
+          letterSpacing: "-0.02em",
         }}
       >
         {title}
@@ -99,11 +100,11 @@ export function SectionHeading({
       {subtitle && (
         <p
           style={{
-            marginTop: "1.25rem",
+            marginTop: "1rem",
             color: "#A1A1AA",
-            fontSize: "1.05rem",
-            lineHeight: 1.8,
-            maxWidth: "600px",
+            fontSize: "1rem",
+            lineHeight: 1.75,
+            maxWidth: "560px",
             ...(center ? { marginLeft: "auto", marginRight: "auto" } : {}),
           }}
         >
