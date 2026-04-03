@@ -2,30 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionWrapper, {
-  SectionHeading,
-  fadeUpVariants,
-} from "@/components/shared/SectionWrapper";
+import SectionWrapper, { SectionHeading, fadeUpVariants } from "@/components/shared/SectionWrapper";
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiTypescript,
-  SiJavascript,
-  SiNodedotjs,
-  SiExpress,
-  SiPrisma,
-  SiPostgresql,
-  SiSupabase,
-  SiDocker,
-  SiGit,
-  SiGithub,
-  SiCloudflare,
-  SiFigma,
-  SiRedux,
-  SiMongodb,
-  SiHtml5,
-  SiCss,
+  SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript,
+  SiNodedotjs, SiExpress, SiPrisma, SiPostgresql, SiSupabase,
+  SiDocker, SiGit, SiGithub, SiCloudflare, SiFigma, SiRedux,
+  SiMongodb, SiHtml5, SiCss,
 } from "react-icons/si";
 
 const categories = ["All", "Frontend", "Backend", "Database", "Tools"] as const;
@@ -33,36 +15,32 @@ type Category = (typeof categories)[number];
 
 interface Skill {
   name: string;
-  icon: React.ComponentType<{ className?: string; color?: string }>;
+  icon: React.ComponentType<{ size?: number; color?: string }>;
   level: number;
   category: Exclude<Category, "All">;
   color: string;
 }
 
 const skills: Skill[] = [
-  // Frontend
-  { name: "React", icon: SiReact, level: 92, category: "Frontend", color: "#61DAFB" },
-  { name: "Next.js", icon: SiNextdotjs, level: 90, category: "Frontend", color: "#FFFFFF" },
-  { name: "TypeScript", icon: SiTypescript, level: 85, category: "Frontend", color: "#3178C6" },
-  { name: "JavaScript", icon: SiJavascript, level: 93, category: "Frontend", color: "#F7DF1E" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, level: 95, category: "Frontend", color: "#06B6D4" },
-  { name: "Redux", icon: SiRedux, level: 78, category: "Frontend", color: "#764ABC" },
-  { name: "HTML5", icon: SiHtml5, level: 98, category: "Frontend", color: "#E34F26" },
-  { name: "CSS3", icon: SiCss, level: 92, category: "Frontend", color: "#1572B6" },
-  // Backend
-  { name: "Node.js", icon: SiNodedotjs, level: 88, category: "Backend", color: "#339933" },
-  { name: "Express", icon: SiExpress, level: 85, category: "Backend", color: "#FFFFFF" },
-  { name: "Prisma", icon: SiPrisma, level: 82, category: "Backend", color: "#2D3748" },
-  // Database
-  { name: "PostgreSQL", icon: SiPostgresql, level: 80, category: "Database", color: "#4169E1" },
-  { name: "Supabase", icon: SiSupabase, level: 78, category: "Database", color: "#3ECF8E" },
-  { name: "MongoDB", icon: SiMongodb, level: 75, category: "Database", color: "#47A248" },
-  // Tools
-  { name: "Git", icon: SiGit, level: 90, category: "Tools", color: "#F05032" },
-  { name: "GitHub", icon: SiGithub, level: 90, category: "Tools", color: "#FFFFFF" },
-  { name: "Docker", icon: SiDocker, level: 72, category: "Tools", color: "#2496ED" },
-  { name: "Cloudflare", icon: SiCloudflare, level: 70, category: "Tools", color: "#F6821F" },
-  { name: "Figma", icon: SiFigma, level: 75, category: "Tools", color: "#F24E1E" },
+  { name: "React",       icon: SiReact,       level: 92, category: "Frontend",  color: "#61DAFB" },
+  { name: "Next.js",     icon: SiNextdotjs,   level: 90, category: "Frontend",  color: "#FFFFFF" },
+  { name: "TypeScript",  icon: SiTypescript,  level: 85, category: "Frontend",  color: "#3178C6" },
+  { name: "JavaScript",  icon: SiJavascript,  level: 93, category: "Frontend",  color: "#F7DF1E" },
+  { name: "Tailwind",    icon: SiTailwindcss, level: 95, category: "Frontend",  color: "#06B6D4" },
+  { name: "Redux",       icon: SiRedux,       level: 78, category: "Frontend",  color: "#764ABC" },
+  { name: "HTML5",       icon: SiHtml5,       level: 98, category: "Frontend",  color: "#E34F26" },
+  { name: "CSS3",        icon: SiCss,         level: 92, category: "Frontend",  color: "#1572B6" },
+  { name: "Node.js",     icon: SiNodedotjs,   level: 88, category: "Backend",   color: "#339933" },
+  { name: "Express",     icon: SiExpress,     level: 85, category: "Backend",   color: "#FFFFFF" },
+  { name: "Prisma",      icon: SiPrisma,      level: 82, category: "Backend",   color: "#2D3748" },
+  { name: "PostgreSQL",  icon: SiPostgresql,  level: 80, category: "Database",  color: "#4169E1" },
+  { name: "Supabase",    icon: SiSupabase,    level: 78, category: "Database",  color: "#3ECF8E" },
+  { name: "MongoDB",     icon: SiMongodb,     level: 75, category: "Database",  color: "#47A248" },
+  { name: "Git",         icon: SiGit,         level: 90, category: "Tools",     color: "#F05032" },
+  { name: "GitHub",      icon: SiGithub,      level: 90, category: "Tools",     color: "#FFFFFF" },
+  { name: "Docker",      icon: SiDocker,      level: 72, category: "Tools",     color: "#2496ED" },
+  { name: "Cloudflare",  icon: SiCloudflare,  level: 70, category: "Tools",     color: "#F6821F" },
+  { name: "Figma",       icon: SiFigma,       level: 75, category: "Tools",     color: "#F24E1E" },
 ];
 
 function SkillCard({ skill, index }: { skill: Skill; index: number }) {
@@ -75,37 +53,56 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
       custom={index}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
-      whileHover={{ y: -4, scale: 1.02 }}
-      className="glass-card rounded-xl p-5 border border-white/5 hover:border-brand-red/20 transition-all cursor-default group"
+      whileHover={{ y: -4, scale: 1.03 }}
+      className="glass-card"
+      style={{
+        borderRadius: "0.875rem",
+        padding: "1.25rem 1rem",
+        border: hovered ? "1px solid rgba(225,29,72,0.3)" : "1px solid rgba(255,255,255,0.06)",
+        cursor: "default",
+        transition: "border-color 0.2s",
+      }}
     >
       {/* Icon + Name */}
-      <div className="flex items-center gap-3 mb-4">
+      <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
         <div
-          className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
           style={{
+            width: "2.5rem",
+            height: "2.5rem",
+            borderRadius: "0.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             backgroundColor: hovered ? `${skill.color}20` : "rgba(255,255,255,0.04)",
             boxShadow: hovered ? `0 0 15px ${skill.color}30` : "none",
+            transition: "all 0.3s",
+            flexShrink: 0,
           }}
         >
-          <Icon
-            className="w-5 h-5 transition-colors duration-300"
-            color={hovered ? skill.color : "#A1A1AA"}
-          />
+          <Icon size={18} color={hovered ? skill.color : "#A1A1AA"} />
         </div>
         <div>
-          <p className="text-white font-semibold text-sm">{skill.name}</p>
-          <p className="text-brand-text text-xs">{skill.level}%</p>
+          <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem" }}>{skill.name}</p>
+          <p style={{ color: "#A1A1AA", fontSize: "0.75rem" }}>{skill.level}%</p>
         </div>
       </div>
 
       {/* Progress bar */}
-      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+      <div
+        style={{
+          height: "4px",
+          backgroundColor: "rgba(255,255,255,0.05)",
+          borderRadius: "9999px",
+          overflow: "hidden",
+        }}
+      >
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${skill.level}%` }}
           transition={{ duration: 1.2, delay: index * 0.04, ease: "easeOut" }}
-          className="h-full rounded-full"
           style={{
+            height: "100%",
+            borderRadius: "9999px",
             background: `linear-gradient(90deg, #E11D48, ${skill.color})`,
           }}
         />
@@ -116,25 +113,26 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
 
 export default function Skills() {
   const [active, setActive] = useState<Category>("All");
-
-  const filtered =
-    active === "All" ? skills : skills.filter((s) => s.category === active);
+  const filtered = active === "All" ? skills : skills.filter((s) => s.category === active);
 
   return (
     <SectionWrapper
       id="skills"
-      className="section-padding bg-brand-dark relative overflow-hidden"
+      className="section-padding"
+      style={{ backgroundColor: "#0A0A0B", position: "relative", overflow: "hidden" }}
     >
-      <div className="absolute inset-0 bg-red-glow pointer-events-none opacity-50" />
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "radial-gradient(circle at center, rgba(225,29,72,0.08) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div className="section-container">
         <SectionHeading
           badge="Technical Skills"
-          title={
-            <>
-              My <span className="gradient-text">Tech Stack</span>
-            </>
-          }
+          title={<>My <span className="gradient-text">Tech Stack</span></>}
           subtitle="Technologies and tools I use to build modern, scalable web applications."
           center
         />
@@ -142,7 +140,13 @@ export default function Skills() {
         {/* Category Tabs */}
         <motion.div
           variants={fadeUpVariants}
-          className="flex flex-wrap justify-center gap-2 mb-10"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "0.625rem",
+            marginBottom: "3rem",
+          }}
         >
           {categories.map((cat) => (
             <motion.button
@@ -151,11 +155,18 @@ export default function Skills() {
               onClick={() => setActive(cat)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200 ${
-                active === cat
-                  ? "bg-brand-red border-brand-red text-white glow-red-sm"
-                  : "glass border-white/10 text-brand-text hover:text-white hover:border-white/20"
-              }`}
+              style={{
+                padding: "0.5rem 1.5rem",
+                borderRadius: "9999px",
+                fontSize: "0.875rem",
+                fontWeight: 600,
+                border: active === cat ? "1px solid #E11D48" : "1px solid rgba(255,255,255,0.1)",
+                backgroundColor: active === cat ? "#E11D48" : "rgba(255,255,255,0.03)",
+                color: active === cat ? "#fff" : "#A1A1AA",
+                cursor: "pointer",
+                transition: "all 0.2s",
+                boxShadow: active === cat ? "0 0 10px rgba(225,29,72,0.3)" : "none",
+              }}
             >
               {cat}
             </motion.button>
@@ -168,7 +179,11 @@ export default function Skills() {
           initial="hidden"
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+            gap: "1rem",
+          }}
         >
           {filtered.map((skill, i) => (
             <SkillCard key={skill.name} skill={skill} index={i} />

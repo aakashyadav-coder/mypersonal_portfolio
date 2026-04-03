@@ -5,48 +5,116 @@ import { Mail, ArrowUp, Code2, Heart } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const socials = [
-  { icon: FaGithub, href: "https://github.com/aakashyadav", label: "GitHub" },
-  { icon: FaLinkedin, href: "https://linkedin.com/in/aakashyadav", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:aakash@aakashyadav.dev", label: "Email" },
+  { icon: FaGithub,   href: "https://github.com/aakashyadav",       label: "GitHub" },
+  { icon: FaLinkedin, href: "https://linkedin.com/in/aakashyadav",  label: "LinkedIn" },
+  { icon: Mail,       href: "mailto:aakash@aakashyadav.dev",        label: "Email" },
 ];
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
+  { label: "About",      href: "#about" },
+  { label: "Skills",     href: "#skills" },
+  { label: "Projects",   href: "#projects" },
   { label: "Experience", href: "#experience" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services",   href: "#services" },
+  { label: "Contact",    href: "#contact" },
 ];
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-brand-dark border-t border-white/5 pt-12 pb-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-red-glow opacity-20 pointer-events-none" />
+    <footer
+      style={{
+        backgroundColor: "#0A0A0B",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+        paddingTop: "4rem",
+        paddingBottom: "2rem",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "radial-gradient(circle at 50% 0%, rgba(225,29,72,0.06) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+      <div className="section-container" style={{ position: "relative" }}>
+        {/* Top grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "3rem",
+            marginBottom: "3rem",
+          }}
+          className="footer-grid"
+        >
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 font-display text-xl font-bold mb-3">
-              <div className="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center">
-                <Code2 className="w-4 h-4 text-white" />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                fontFamily: "var(--font-display)",
+                fontSize: "1.2rem",
+                fontWeight: 700,
+                marginBottom: "1rem",
+              }}
+            >
+              <div
+                style={{
+                  width: "2rem",
+                  height: "2rem",
+                  borderRadius: "0.5rem",
+                  backgroundColor: "#E11D48",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <Code2 style={{ width: "1rem", height: "1rem", color: "#fff" }} />
               </div>
-              <span className="text-white">Aakash</span>
-              <span className="text-brand-red">Yadav</span>
+              <span style={{ color: "#fff" }}>Aakash</span>
+              <span style={{ color: "#E11D48" }}>Yadav</span>
             </div>
-            <p className="text-brand-text text-sm leading-relaxed max-w-xs">
-              Software &amp; Web Developer crafting scalable digital experiences
-              with modern technologies. Based in Nepal, open to remote work globally.
+            <p
+              style={{
+                color: "#A1A1AA",
+                fontSize: "0.9rem",
+                lineHeight: 1.8,
+                maxWidth: "22rem",
+              }}
+            >
+              Software &amp; Web Developer crafting scalable digital experiences with modern
+              technologies. Based in Nepal, open to remote work globally.
             </p>
           </div>
 
           {/* Nav links */}
           <div>
-            <h4 className="text-white font-semibold mb-3 text-sm">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-1">
+            <h4
+              style={{
+                color: "#fff",
+                fontWeight: 600,
+                fontSize: "0.95rem",
+                marginBottom: "1.25rem",
+              }}
+            >
+              Quick Links
+            </h4>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "0.375rem",
+              }}
+            >
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -57,7 +125,15 @@ export default function Footer() {
                       .getElementById(link.href.replace("#", ""))
                       ?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="text-brand-text hover:text-brand-red text-sm py-1 transition-colors"
+                  style={{
+                    color: "#A1A1AA",
+                    fontSize: "0.9rem",
+                    padding: "0.375rem 0",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#E11D48")}
+                  onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#A1A1AA")}
                 >
                   {link.label}
                 </a>
@@ -65,10 +141,19 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Social */}
+          {/* Connect */}
           <div>
-            <h4 className="text-white font-semibold mb-3 text-sm">Connect</h4>
-            <div className="flex gap-3">
+            <h4
+              style={{
+                color: "#fff",
+                fontWeight: 600,
+                fontSize: "0.95rem",
+                marginBottom: "1.25rem",
+              }}
+            >
+              Connect
+            </h4>
+            <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1rem" }}>
               {socials.map(({ icon: Icon, href, label }) => (
                 <motion.a
                   key={label}
@@ -77,40 +162,103 @@ export default function Footer() {
                   rel="noreferrer"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 rounded-lg glass border border-white/10 flex items-center justify-center text-brand-text hover:text-brand-red hover:border-brand-red/30 transition-colors"
+                  className="glass"
+                  style={{
+                    width: "2.5rem",
+                    height: "2.5rem",
+                    borderRadius: "0.625rem",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#A1A1AA",
+                    textDecoration: "none",
+                    fontSize: "1rem",
+                    transition: "color 0.2s, border-color 0.2s",
+                  }}
+                  onHoverStart={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "#E11D48";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(225,29,72,0.3)";
+                  }}
+                  onHoverEnd={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = "#A1A1AA";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
+                  }}
                   aria-label={label}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon />
                 </motion.a>
               ))}
             </div>
-            <p className="text-brand-text text-xs mt-4">
+            <p style={{ color: "#A1A1AA", fontSize: "0.825rem" }}>
               Open to work — Let&apos;s connect!
             </p>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-brand-text text-xs flex items-center gap-1">
+        <div
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            paddingTop: "1.75rem",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "1rem",
+          }}
+        >
+          <p
+            style={{
+              color: "#A1A1AA",
+              fontSize: "0.8rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.3rem",
+            }}
+          >
             Built with{" "}
-            <Heart className="w-3 h-3 text-brand-red fill-brand-red" /> by{" "}
-            <span className="text-white">Aakash Yadav</span> · {new Date().getFullYear()}
+            <Heart style={{ width: "0.75rem", height: "0.75rem", color: "#E11D48", fill: "#E11D48" }} />{" "}
+            by{" "}
+            <span style={{ color: "#fff" }}>Aakash Yadav</span> &middot; {new Date().getFullYear()}
           </p>
-          <p className="text-brand-text text-xs">
+
+          <p style={{ color: "#A1A1AA", fontSize: "0.8rem" }}>
             Next.js · Tailwind CSS · Framer Motion
           </p>
+
           <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-9 h-9 rounded-lg glass border border-white/10 flex items-center justify-center text-brand-text hover:text-brand-red hover:border-brand-red/30 transition-colors"
+            className="glass"
+            style={{
+              width: "2.25rem",
+              height: "2.25rem",
+              borderRadius: "0.5rem",
+              border: "1px solid rgba(255,255,255,0.08)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#A1A1AA",
+              cursor: "pointer",
+              background: "transparent",
+              transition: "color 0.2s, border-color 0.2s",
+            }}
             aria-label="Back to top"
           >
-            <ArrowUp className="w-4 h-4" />
+            <ArrowUp style={{ width: "1rem", height: "1rem" }} />
           </motion.button>
         </div>
       </div>
+
+      <style>{`
+        @media (min-width: 768px) {
+          .footer-grid {
+            grid-template-columns: 2fr 1fr 1fr !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

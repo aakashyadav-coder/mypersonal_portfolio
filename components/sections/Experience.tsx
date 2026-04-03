@@ -1,10 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SectionWrapper, {
-  SectionHeading,
-  fadeUpVariants,
-} from "@/components/shared/SectionWrapper";
+import SectionWrapper, { SectionHeading, fadeUpVariants } from "@/components/shared/SectionWrapper";
 import { Briefcase, Calendar, MapPin, CheckCircle } from "lucide-react";
 
 interface ExperienceItem {
@@ -34,7 +31,7 @@ const experiences: ExperienceItem[] = [
     achievements: [
       "Reduced API response time by 40% through query optimization and caching",
       "Built a multi-tenant SaaS platform serving 500+ concurrent users",
-      "Implemented end-to-end test coverage from 0% to 75% with Jest & Playwright",
+      "End-to-end test coverage from 0% to 75% with Jest & Playwright",
       "Led migration of legacy PHP app to Next.js — 60% performance improvement",
     ],
     tech: ["Next.js", "Node.js", "PostgreSQL", "Docker", "Prisma"],
@@ -65,7 +62,7 @@ const experiences: ExperienceItem[] = [
     description:
       "Built and maintained web applications for small businesses and startups across various industries, delivering end-to-end solutions independently.",
     achievements: [
-      "Completed 10+ projects for international clients via Upwork",
+      "Completed 10+ projects for international clients",
       "Developed a QR-based restaurant ordering system used by 3 restaurants",
       "Maintained 5-star rating on freelancing platforms",
     ],
@@ -77,108 +74,196 @@ export default function Experience() {
   return (
     <SectionWrapper
       id="experience"
-      className="section-padding bg-brand-dark relative overflow-hidden"
+      className="section-padding"
+      style={{ backgroundColor: "#0A0A0B", position: "relative", overflow: "hidden" }}
     >
-      <div className="absolute left-0 top-1/4 w-80 h-80 bg-brand-red/5 rounded-full blur-3xl pointer-events-none" />
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: "25%",
+          width: "20rem",
+          height: "20rem",
+          borderRadius: "50%",
+          background: "rgba(225,29,72,0.05)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+        }}
+      />
 
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="section-container">
         <SectionHeading
           badge="Experience"
-          title={
-            <>
-              Work <span className="gradient-text">History</span>
-            </>
-          }
+          title={<>Work <span className="gradient-text">History</span></>}
           subtitle="My professional journey building real-world solutions that matter."
         />
 
-        <div className="relative">
+        {/* Timeline */}
+        <div style={{ position: "relative" }}>
           {/* Vertical line */}
-          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px timeline-line opacity-40" />
+          <div
+            style={{
+              position: "absolute",
+              left: "1.75rem",
+              top: 0,
+              bottom: 0,
+              width: "1px",
+              background: "linear-gradient(to bottom, #E11D48, transparent)",
+              opacity: 0.3,
+            }}
+          />
 
-          <div className="space-y-10">
+          <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
             {experiences.map((exp, i) => (
               <motion.div
                 key={exp.id}
                 variants={fadeUpVariants}
                 custom={i}
-                className="relative flex gap-6 md:gap-10"
+                style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}
               >
-                {/* Timeline dot */}
-                <div className="relative flex-shrink-0 flex flex-col items-center">
+                {/* Dot */}
+                <div style={{ flexShrink: 0 }}>
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.15, type: "spring" }}
-                    className={`w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center border-2 z-10 ${
-                      exp.current
-                        ? "bg-brand-red border-brand-red glow-red-sm animate-pulse-glow"
-                        : "glass-card border-brand-border"
-                    }`}
+                    style={{
+                      width: "3.5rem",
+                      height: "3.5rem",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      zIndex: 10,
+                      position: "relative",
+                      border: exp.current ? "2px solid #E11D48" : "2px solid #27272A",
+                      backgroundColor: exp.current ? "#E11D48" : "#18181B",
+                      boxShadow: exp.current ? "0 0 16px rgba(225,29,72,0.4)" : "none",
+                    }}
                   >
                     <Briefcase
-                      className={`w-5 h-5 md:w-6 md:h-6 ${
-                        exp.current ? "text-white" : "text-brand-text"
-                      }`}
+                      style={{
+                        width: "1.1rem",
+                        height: "1.1rem",
+                        color: exp.current ? "#fff" : "#A1A1AA",
+                      }}
                     />
                   </motion.div>
                 </div>
 
                 {/* Card */}
-                <div className="flex-1 glass-card rounded-2xl p-6 border border-white/5 hover:border-brand-red/20 transition-colors mb-2">
+                <div
+                  className="glass-card"
+                  style={{
+                    flex: 1,
+                    borderRadius: "1rem",
+                    padding: "1.75rem",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    marginBottom: "0.5rem",
+                    transition: "border-color 0.2s",
+                  }}
+                >
                   {/* Header */}
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      justifyContent: "space-between",
+                      alignItems: "flex-start",
+                      gap: "0.75rem",
+                      marginBottom: "1rem",
+                    }}
+                  >
                     <div>
-                      <h3 className="font-display text-lg font-bold text-white">
+                      <h3
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontSize: "1.1rem",
+                          fontWeight: 700,
+                          color: "#fff",
+                        }}
+                      >
                         {exp.role}
                       </h3>
-                      <p className="text-brand-red font-semibold">{exp.company}</p>
+                      <p style={{ color: "#E11D48", fontWeight: 600, marginTop: "0.2rem" }}>{exp.company}</p>
                     </div>
-                    <div className="flex flex-col items-end gap-1">
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.3rem" }}>
                       {exp.current && (
-                        <span className="px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold">
+                        <span
+                          style={{
+                            padding: "0.2rem 0.6rem",
+                            borderRadius: "9999px",
+                            background: "rgba(74,222,128,0.1)",
+                            border: "1px solid rgba(74,222,128,0.3)",
+                            color: "#4ade80",
+                            fontSize: "0.7rem",
+                            fontWeight: 600,
+                          }}
+                        >
                           Current
                         </span>
                       )}
-                      <span className="px-2 py-0.5 rounded-full glass border border-white/10 text-brand-text text-xs">
+                      <span
+                        style={{
+                          padding: "0.2rem 0.6rem",
+                          borderRadius: "9999px",
+                          background: "rgba(255,255,255,0.04)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                          color: "#A1A1AA",
+                          fontSize: "0.7rem",
+                        }}
+                      >
                         {exp.type}
                       </span>
                     </div>
                   </div>
 
                   {/* Meta */}
-                  <div className="flex flex-wrap gap-4 text-xs text-brand-text mb-4">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {exp.duration}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem", marginBottom: "1rem" }}>
+                    <span
+                      style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.8rem", color: "#A1A1AA" }}
+                    >
+                      <Calendar style={{ width: "0.8rem", height: "0.8rem" }} /> {exp.duration}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      {exp.location}
+                    <span
+                      style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.8rem", color: "#A1A1AA" }}
+                    >
+                      <MapPin style={{ width: "0.8rem", height: "0.8rem" }} /> {exp.location}
                     </span>
                   </div>
 
-                  <p className="text-brand-text text-sm leading-relaxed mb-4">
+                  <p style={{ color: "#A1A1AA", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1rem" }}>
                     {exp.description}
                   </p>
 
                   {/* Achievements */}
-                  <ul className="space-y-2 mb-4">
+                  <ul style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1rem" }}>
                     {exp.achievements.map((ach) => (
-                      <li key={ach} className="flex items-start gap-2 text-sm text-brand-text">
-                        <CheckCircle className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
+                      <li
+                        key={ach}
+                        style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.875rem", color: "#A1A1AA" }}
+                      >
+                        <CheckCircle style={{ width: "1rem", height: "1rem", color: "#E11D48", flexShrink: 0, marginTop: "2px" }} />
                         {ach}
                       </li>
                     ))}
                   </ul>
 
-                  {/* Tech stack */}
-                  <div className="flex flex-wrap gap-2">
+                  {/* Tech */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
                     {exp.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-2.5 py-0.5 rounded-lg bg-brand-red/10 border border-brand-red/20 text-brand-red text-xs font-medium"
+                        style={{
+                          padding: "0.2rem 0.65rem",
+                          borderRadius: "0.4rem",
+                          background: "rgba(225,29,72,0.08)",
+                          border: "1px solid rgba(225,29,72,0.2)",
+                          color: "#E11D48",
+                          fontSize: "0.75rem",
+                          fontWeight: 500,
+                        }}
                       >
                         {t}
                       </span>

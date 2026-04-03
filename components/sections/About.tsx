@@ -1,24 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SectionWrapper, {
-  SectionHeading,
-  fadeUpVariants,
-} from "@/components/shared/SectionWrapper";
-import {
-  GraduationCap,
-  Briefcase,
-  Code2,
-  Rocket,
-  Award,
-  MapPin,
-} from "lucide-react";
+import SectionWrapper, { SectionHeading, fadeUpVariants } from "@/components/shared/SectionWrapper";
+import { GraduationCap, Briefcase, Code2, Rocket, Award, MapPin } from "lucide-react";
 
 const stats = [
   { icon: Briefcase, value: "2+", label: "Years Experience" },
-  { icon: Code2, value: "15+", label: "Projects Built" },
-  { icon: Award, value: "1", label: "Degree (BScIT)" },
-  { icon: Rocket, value: "5+", label: "Happy Clients" },
+  { icon: Code2,     value: "15+", label: "Projects Built" },
+  { icon: Award,     value: "1",   label: "Degree (BScIT)" },
+  { icon: Rocket,    value: "5+",  label: "Happy Clients" },
 ];
 
 const highlights = [
@@ -27,21 +17,21 @@ const highlights = [
     title: "Bachelor of Science in IT",
     detail: "Software & Web Development",
     sub: "Graduated with Distinction",
-    color: "text-brand-red",
+    iconColor: "#E11D48",
   },
   {
     icon: Briefcase,
     title: "2+ Years Real-World Experience",
     detail: "Full-Stack Development",
     sub: "From startups to enterprise",
-    color: "text-blue-400",
+    iconColor: "#60a5fa",
   },
   {
     icon: MapPin,
     title: "Currently Based In",
     detail: "Nepal",
     sub: "Open to remote work globally",
-    color: "text-green-400",
+    iconColor: "#4ade80",
   },
 ];
 
@@ -49,82 +39,185 @@ export default function About() {
   return (
     <SectionWrapper
       id="about"
-      className="section-padding bg-brand-surface relative overflow-hidden"
+      className="section-padding"
+      style={{ backgroundColor: "#111113", position: "relative", overflow: "hidden" }}
     >
-      {/* Subtle background glow */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-red/3 rounded-full blur-3xl pointer-events-none" />
+      {/* Background glow */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: "24rem",
+          height: "24rem",
+          borderRadius: "50%",
+          background: "rgba(225,29,72,0.05)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          {/* Left — Visual */}
-          <motion.div variants={fadeUpVariants} className="relative">
-            {/* Avatar container */}
-            <div className="relative mx-auto w-72 h-72 sm:w-80 sm:h-80 lg:w-full lg:h-96">
-              {/* Outer ring */}
-              <div className="absolute inset-0 rounded-2xl border-2 border-brand-red/20 rotate-3 scale-105" />
-              <div className="absolute inset-0 rounded-2xl border border-white/5 -rotate-2 scale-[1.02]" />
+      <div className="section-container">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "5rem",
+            alignItems: "center",
+          }}
+          className="about-grid"
+        >
+          {/* Left — Avatar */}
+          <motion.div variants={fadeUpVariants} style={{ position: "relative" }}>
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "20rem",
+                margin: "0 auto",
+                aspectRatio: "1",
+              }}
+            >
+              {/* Rings */}
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "1rem",
+                  border: "2px solid rgba(225,29,72,0.2)",
+                  transform: "rotate(3deg) scale(1.05)",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "1rem",
+                  border: "1px solid rgba(255,255,255,0.05)",
+                  transform: "rotate(-2deg) scale(1.02)",
+                }}
+              />
 
               {/* Avatar box */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-brand-card to-brand-dark flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-40 h-40 rounded-full bg-gradient-to-br from-brand-red/30 to-brand-red-dark/50 mx-auto flex items-center justify-center text-7xl font-black text-white border-4 border-brand-red/30 shadow-2xl">
-                    <span className="font-display">A</span>
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "1rem",
+                  overflow: "hidden",
+                  background: "linear-gradient(135deg, #18181B, #0A0A0B)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <div style={{ textAlign: "center" }}>
+                  <div
+                    style={{
+                      width: "10rem",
+                      height: "10rem",
+                      borderRadius: "50%",
+                      background: "linear-gradient(135deg,rgba(225,29,72,0.3),rgba(159,18,57,0.5))",
+                      margin: "0 auto",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "4rem",
+                      fontWeight: 900,
+                      color: "#fff",
+                      border: "4px solid rgba(225,29,72,0.3)",
+                      boxShadow: "0 0 40px rgba(225,29,72,0.2)",
+                      fontFamily: "var(--font-display)",
+                    }}
+                  >
+                    A
                   </div>
-                  <p className="mt-4 font-display font-bold text-xl text-white">Aakash Yadav</p>
-                  <p className="text-brand-red text-sm mt-1">Software & Web Developer</p>
+                  <p
+                    style={{
+                      marginTop: "1rem",
+                      fontFamily: "var(--font-display)",
+                      fontWeight: 700,
+                      fontSize: "1.25rem",
+                      color: "#fff",
+                    }}
+                  >
+                    Aakash Yadav
+                  </p>
+                  <p style={{ color: "#E11D48", fontSize: "0.875rem", marginTop: "0.25rem" }}>
+                    Software &amp; Web Developer
+                  </p>
                 </div>
-                {/* Shimmer sweep */}
-                <div className="absolute inset-0 shimmer-bg opacity-20" />
+                <div className="shimmer-bg" style={{ position: "absolute", inset: 0, opacity: 0.2 }} />
               </div>
 
-              {/* Floating badge */}
+              {/* Floating badges */}
               <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -bottom-4 -right-4 glass-card rounded-xl px-4 py-3 border border-brand-red/20"
+                className="glass-card"
+                style={{
+                  position: "absolute",
+                  bottom: "-1rem",
+                  right: "-1rem",
+                  borderRadius: "0.75rem",
+                  padding: "0.75rem 1rem",
+                  border: "1px solid rgba(225,29,72,0.2)",
+                }}
               >
-                <span className="text-xs text-brand-text">Currently</span>
-                <p className="text-white font-semibold text-sm">Open to work ✨</p>
+                <p style={{ fontSize: "0.7rem", color: "#A1A1AA" }}>Currently</p>
+                <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem" }}>Open to work ✨</p>
               </motion.div>
 
               <motion.div
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 3.5, repeat: Infinity, delay: 1 }}
-                className="absolute -top-4 -left-4 glass-card rounded-xl px-4 py-3 border border-white/5"
+                className="glass-card"
+                style={{
+                  position: "absolute",
+                  top: "-1rem",
+                  left: "-1rem",
+                  borderRadius: "0.75rem",
+                  padding: "0.75rem 1rem",
+                  border: "1px solid rgba(255,255,255,0.05)",
+                }}
               >
-                <span className="text-xs text-brand-text">Experience</span>
-                <p className="text-white font-semibold text-sm">2+ Years 🚀</p>
+                <p style={{ fontSize: "0.7rem", color: "#A1A1AA" }}>Experience</p>
+                <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem" }}>2+ Years 🚀</p>
               </motion.div>
             </div>
           </motion.div>
 
           {/* Right — Content */}
-          <div className="space-y-8">
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             <SectionHeading
               badge="About Me"
-              title={
-                <>
-                  Building Digital{" "}
-                  <span className="gradient-text">Experiences</span>
-                </>
-          }
+              title={<>Building Digital <span className="gradient-text">Experiences</span></>}
             />
 
-            <motion.div variants={fadeUpVariants} className="space-y-4 text-brand-text leading-relaxed">
+            <motion.div
+              variants={fadeUpVariants}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+                color: "#A1A1AA",
+                lineHeight: 1.8,
+                fontSize: "1rem",
+              }}
+            >
               <p>
                 I&apos;m a passionate{" "}
-                <span className="text-white font-semibold">Software &amp; Web Developer</span>{" "}
+                <span style={{ color: "#FAFAFA", fontWeight: 600 }}>Software &amp; Web Developer</span>{" "}
                 with over 2 years of real-world experience building production-grade web applications
                 that scale. My journey started with a{" "}
-                <span className="text-brand-red font-semibold">BScIT in Software & Web Development</span>,
+                <span style={{ color: "#E11D48", fontWeight: 600 }}>BScIT in Software &amp; Web Development</span>,
                 and I&apos;ve been shipping impactful products ever since.
               </p>
               <p>
                 I specialize in full-stack development using modern tools like{" "}
-                <span className="text-white">React, Next.js, and Node.js</span> — always with an
-                eye for clean code, performance, and developer experience. I love turning complex
-                problems into elegant, user-centric solutions.
+                <span style={{ color: "#FAFAFA" }}>React, Next.js, and Node.js</span> — always with an
+                eye for clean code, performance, and developer experience.
               </p>
               <p>
                 When I&apos;m not coding, I&apos;m exploring new technologies, contributing to
@@ -132,43 +225,95 @@ export default function About() {
               </p>
             </motion.div>
 
-            {/* Highlight cards */}
-            <motion.div variants={fadeUpVariants} className="grid gap-3">
+            {/* Highlights */}
+            <motion.div
+              variants={fadeUpVariants}
+              style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+            >
               {highlights.map((h) => (
                 <div
                   key={h.title}
-                  className="glass-card rounded-xl p-4 flex items-center gap-4 border border-white/5 hover:border-brand-red/20 transition-colors"
+                  className="glass-card"
+                  style={{
+                    borderRadius: "0.75rem",
+                    padding: "1rem 1.25rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                  }}
                 >
-                  <div className={`p-2 rounded-lg bg-white/5 ${h.color}`}>
-                    <h.icon className="w-5 h-5" />
+                  <div
+                    style={{
+                      padding: "0.5rem",
+                      borderRadius: "0.5rem",
+                      background: "rgba(255,255,255,0.05)",
+                      color: h.iconColor,
+                      flexShrink: 0,
+                    }}
+                  >
+                    <h.icon style={{ width: "1.25rem", height: "1.25rem" }} />
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-sm">{h.title}</p>
-                    <p className="text-brand-red text-xs">{h.detail}</p>
-                    <p className="text-brand-text text-xs mt-0.5">{h.sub}</p>
+                    <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.9rem" }}>{h.title}</p>
+                    <p style={{ color: "#E11D48", fontSize: "0.8rem" }}>{h.detail}</p>
+                    <p style={{ color: "#A1A1AA", fontSize: "0.75rem", marginTop: "0.125rem" }}>{h.sub}</p>
                   </div>
                 </div>
               ))}
             </motion.div>
 
-            {/* Stats */}
-            <motion.div variants={fadeUpVariants} className="grid grid-cols-2 gap-4">
+            {/* Stats grid */}
+            <motion.div
+              variants={fadeUpVariants}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "1rem",
+              }}
+            >
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="glass-card rounded-xl p-4 text-center border border-white/5 hover:border-brand-red/20 transition-all hover:scale-105"
+                  className="glass-card"
+                  style={{
+                    borderRadius: "0.75rem",
+                    padding: "1.25rem",
+                    textAlign: "center",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    cursor: "default",
+                    transition: "border-color 0.2s, transform 0.2s",
+                  }}
                 >
-                  <stat.icon className="w-5 h-5 text-brand-red mx-auto mb-2" />
-                  <div className="font-display text-2xl font-black text-white">
+                  <stat.icon style={{ width: "1.25rem", height: "1.25rem", color: "#E11D48", margin: "0 auto 0.5rem" }} />
+                  <div
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.5rem",
+                      fontWeight: 900,
+                      color: "#fff",
+                    }}
+                  >
                     {stat.value}
                   </div>
-                  <div className="text-brand-text text-xs mt-1">{stat.label}</div>
+                  <div style={{ color: "#A1A1AA", fontSize: "0.75rem", marginTop: "0.25rem" }}>
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </motion.div>
           </div>
         </div>
       </div>
+
+      {/* Responsive grid CSS */}
+      <style>{`
+        @media (min-width: 1024px) {
+          .about-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+      `}</style>
     </SectionWrapper>
   );
 }

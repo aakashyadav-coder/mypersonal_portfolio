@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SectionWrapper, {
-  SectionHeading,
-  fadeUpVariants,
-} from "@/components/shared/SectionWrapper";
+import SectionWrapper, { SectionHeading, fadeUpVariants } from "@/components/shared/SectionWrapper";
 import { ExternalLink, Star, Filter } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
@@ -26,150 +23,74 @@ const projects: Project[] = [
   {
     id: 1,
     title: "QR-Based Restaurant Ordering System",
-    description:
-      "A full-stack QR code ordering platform for restaurants featuring real-time order management, multi-role dashboards (customer, waiter, kitchen, admin), Stripe payments, and live order tracking via WebSockets.",
+    description: "A full-stack QR code ordering platform featuring real-time order management, multi-role dashboards (customer, waiter, kitchen, admin), Stripe payments, and live order tracking via WebSockets.",
     tags: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Stripe", "WebSocket"],
     category: "Full Stack",
     featured: true,
     liveUrl: "https://smartorder.demo.io",
     githubUrl: "https://github.com/aakashyadav/smart-order",
-    gradient: "from-brand-red/20 to-orange-500/10",
+    gradient: "linear-gradient(135deg,rgba(225,29,72,0.2),rgba(249,115,22,0.1))",
     emoji: "🍽️",
   },
   {
     id: 2,
     title: "Developer Portfolio v2",
-    description:
-      "This portfolio website — built with Next.js 14, Tailwind CSS, Framer Motion, and shadcn/ui. Features dark/light mode, smooth animations, and a fully responsive design.",
+    description: "This portfolio website — built with Next.js, Tailwind CSS, Framer Motion, and TypeScript. Features dark/light mode, smooth animations, and fully responsive design.",
     tags: ["Next.js", "Tailwind", "Framer Motion", "TypeScript"],
     category: "Frontend",
     featured: true,
     liveUrl: "https://aakashyadav.dev",
     githubUrl: "https://github.com/aakashyadav/portfolio",
-    gradient: "from-blue-500/20 to-purple-500/10",
+    gradient: "linear-gradient(135deg,rgba(59,130,246,0.2),rgba(168,85,247,0.1))",
     emoji: "🚀",
   },
   {
     id: 3,
     title: "E-Commerce Platform",
-    description:
-      "Full-featured e-commerce solution with product catalog, cart management, user authentication, order tracking, and an admin dashboard for inventory management.",
+    description: "Full-featured e-commerce solution with product catalog, cart management, authentication, order tracking, and an admin dashboard for inventory management.",
     tags: ["React", "Node.js", "MongoDB", "Redux", "Express"],
     category: "Full Stack",
     liveUrl: "https://ecom.demo.io",
     githubUrl: "https://github.com/aakashyadav/ecommerce",
-    gradient: "from-green-500/20 to-teal-500/10",
+    gradient: "linear-gradient(135deg,rgba(34,197,94,0.2),rgba(20,184,166,0.1))",
     emoji: "🛒",
   },
   {
     id: 4,
     title: "Real-Time Chat Application",
-    description:
-      "Socket.io powered chat app with room support, private messaging, message history, online presence indicators, and file sharing capabilities.",
+    description: "Socket.io powered chat app with room support, private messaging, message history, online presence indicators, and file sharing capabilities.",
     tags: ["React", "Socket.io", "Node.js", "MongoDB"],
     category: "Full Stack",
     liveUrl: "https://chat.demo.io",
     githubUrl: "https://github.com/aakashyadav/realtime-chat",
-    gradient: "from-purple-500/20 to-pink-500/10",
+    gradient: "linear-gradient(135deg,rgba(168,85,247,0.2),rgba(236,72,153,0.1))",
     emoji: "💬",
   },
   {
     id: 5,
     title: "Task Management SaaS",
-    description:
-      "Kanban-style project management tool with drag-and-drop, team collaboration, deadline tracking, notifications, and multi-workspace support.",
+    description: "Kanban-style project management tool with drag-and-drop, team collaboration, deadline tracking, notifications, and multi-workspace support.",
     tags: ["Next.js", "Prisma", "PostgreSQL", "Neon", "NextAuth"],
     category: "Full Stack",
     liveUrl: "https://tasks.demo.io",
     githubUrl: "https://github.com/aakashyadav/taskmanager",
-    gradient: "from-yellow-500/20 to-orange-500/10",
+    gradient: "linear-gradient(135deg,rgba(234,179,8,0.2),rgba(249,115,22,0.1))",
     emoji: "📋",
   },
   {
     id: 6,
     title: "REST API Boilerplate",
-    description:
-      "Production-ready Express.js + TypeScript REST API template with JWT auth, rate limiting, input validation, error handling, and full Swagger docs.",
+    description: "Production-ready Express.js + TypeScript REST API template with JWT auth, rate limiting, input validation, error handling, and full Swagger docs.",
     tags: ["Node.js", "Express", "TypeScript", "PostgreSQL", "JWT"],
     category: "Backend",
     liveUrl: "https://github.com/aakashyadav/api-boilerplate",
     githubUrl: "https://github.com/aakashyadav/api-boilerplate",
-    gradient: "from-red-500/20 to-brand-red/10",
+    gradient: "linear-gradient(135deg,rgba(239,68,68,0.2),rgba(225,29,72,0.1))",
     emoji: "⚡",
   },
 ];
 
 const filterTags = ["All", "Full Stack", "Frontend", "Backend"];
-
-export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const filtered =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeFilter);
-
-  return (
-    <SectionWrapper
-      id="projects"
-      className="section-padding bg-brand-surface relative overflow-hidden"
-    >
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <SectionHeading
-          badge="Portfolio"
-          title={
-            <>
-              Featured <span className="gradient-text">Projects</span>
-            </>
-          }
-          subtitle="A selection of real-world projects I've built — from concept to production."
-        />
-
-        {/* Filter buttons */}
-        <motion.div
-          variants={fadeUpVariants}
-          className="flex flex-wrap gap-2 mb-10"
-        >
-          <Filter className="w-4 h-4 text-brand-text self-center mr-1" />
-          {filterTags.map((tag) => (
-            <motion.button
-              key={tag}
-              id={`project-filter-${tag.toLowerCase().replace(" ", "-")}`}
-              onClick={() => setActiveFilter(tag)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all ${
-                activeFilter === tag
-                  ? "bg-brand-red border-brand-red text-white"
-                  : "glass border-white/10 text-brand-text hover:text-white"
-              }`}
-            >
-              {tag}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Projects Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeFilter}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {filtered.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
-            ))}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </SectionWrapper>
-  );
-}
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [hovered, setHovered] = useState(false);
@@ -182,38 +103,89 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       whileHover={{ y: -6 }}
-      className={`relative glass-card rounded-2xl overflow-hidden border transition-all duration-300 ${
-        project.featured
-          ? "border-brand-red/20 hover:border-brand-red/40"
-          : "border-white/5 hover:border-white/10"
-      } flex flex-col`}
+      className="glass-card"
+      style={{
+        borderRadius: "1rem",
+        overflow: "hidden",
+        border: project.featured
+          ? hovered ? "1px solid rgba(225,29,72,0.5)" : "1px solid rgba(225,29,72,0.2)"
+          : hovered ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(255,255,255,0.06)",
+        display: "flex",
+        flexDirection: "column",
+        transition: "border-color 0.25s",
+        boxShadow: hovered && project.featured ? "0 8px 40px rgba(225,29,72,0.1)" : "none",
+      }}
     >
-      {/* Header gradient */}
-      <div className={`bg-gradient-to-br ${project.gradient} p-6 flex items-center justify-between`}>
-        <span className="text-5xl">{project.emoji}</span>
+      {/* Header */}
+      <div
+        style={{
+          background: project.gradient,
+          padding: "1.5rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <span style={{ fontSize: "3rem" }}>{project.emoji}</span>
         {project.featured && (
-          <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-brand-red/20 border border-brand-red/40 text-brand-red text-xs font-semibold">
-            <Star className="w-3 h-3 fill-brand-red" />
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.25rem",
+              padding: "0.25rem 0.75rem",
+              borderRadius: "9999px",
+              background: "rgba(225,29,72,0.2)",
+              border: "1px solid rgba(225,29,72,0.4)",
+              color: "#E11D48",
+              fontSize: "0.7rem",
+              fontWeight: 600,
+            }}
+          >
+            <Star style={{ width: "0.75rem", height: "0.75rem", fill: "#E11D48" }} />
             Featured
           </span>
         )}
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col flex-1">
-        <h3 className="font-display text-lg font-bold text-white leading-tight mb-2">
+      <div
+        style={{
+          padding: "1.5rem",
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          gap: "0.75rem",
+        }}
+      >
+        <h3
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "1.05rem",
+            fontWeight: 700,
+            color: "#fff",
+            lineHeight: 1.4,
+          }}
+        >
           {project.title}
         </h3>
-        <p className="text-brand-text text-sm leading-relaxed flex-1">
+        <p style={{ color: "#A1A1AA", fontSize: "0.875rem", lineHeight: 1.7, flex: 1 }}>
           {project.description}
         </p>
 
-        {/* Tech tags */}
-        <div className="flex flex-wrap gap-1.5 mt-4">
+        {/* Tags */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 rounded-md bg-white/5 border border-white/8 text-brand-text text-xs"
+              style={{
+                padding: "0.2rem 0.6rem",
+                borderRadius: "0.375rem",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                color: "#A1A1AA",
+                fontSize: "0.7rem",
+              }}
             >
               {tag}
             </span>
@@ -221,40 +193,146 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 mt-5">
+        <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.5rem" }}>
           <motion.a
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-sm font-semibold transition-colors"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            style={{
+              flex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.4rem",
+              padding: "0.6rem",
+              borderRadius: "0.625rem",
+              backgroundColor: "#E11D48",
+              color: "#fff",
+              fontSize: "0.8rem",
+              fontWeight: 600,
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
           >
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink style={{ width: "0.875rem", height: "0.875rem" }} />
             Live Demo
           </motion.a>
           <motion.a
             href={project.githubUrl}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl glass border border-white/10 hover:border-white/20 text-white text-sm font-semibold transition-colors"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            className="glass"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "0.6rem 1rem",
+              borderRadius: "0.625rem",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "#fff",
+              fontSize: "1rem",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
           >
-            <FaGithub className="w-4 h-4" />
+            <FaGithub />
           </motion.a>
         </div>
       </div>
+    </motion.div>
+  );
+}
 
-      {/* Hover glow */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        animate={{
-          boxShadow: hovered && project.featured
-            ? "inset 0 0 30px rgba(225,29,72,0.08)"
-            : "none",
+export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const filtered = activeFilter === "All" ? projects : projects.filter((p) => p.category === activeFilter);
+
+  return (
+    <SectionWrapper
+      id="projects"
+      className="section-padding"
+      style={{ backgroundColor: "#111113", position: "relative", overflow: "hidden" }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          right: 0,
+          width: "24rem",
+          height: "24rem",
+          borderRadius: "50%",
+          background: "rgba(225,29,72,0.04)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
         }}
       />
-    </motion.div>
+      <div className="section-container">
+        <SectionHeading
+          badge="Portfolio"
+          title={<>Featured <span className="gradient-text">Projects</span></>}
+          subtitle="A selection of real-world projects I've built — from concept to production."
+        />
+
+        {/* Filter */}
+        <motion.div
+          variants={fadeUpVariants}
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: "0.625rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <Filter style={{ width: "1rem", height: "1rem", color: "#A1A1AA" }} />
+          {filterTags.map((tag) => (
+            <motion.button
+              key={tag}
+              id={`project-filter-${tag.toLowerCase().replace(" ", "-")}`}
+              onClick={() => setActiveFilter(tag)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                padding: "0.4rem 1.25rem",
+                borderRadius: "9999px",
+                fontSize: "0.85rem",
+                fontWeight: 500,
+                border: activeFilter === tag ? "1px solid #E11D48" : "1px solid rgba(255,255,255,0.1)",
+                backgroundColor: activeFilter === tag ? "#E11D48" : "rgba(255,255,255,0.03)",
+                color: activeFilter === tag ? "#fff" : "#A1A1AA",
+                cursor: "pointer",
+                transition: "all 0.2s",
+              }}
+            >
+              {tag}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+              gap: "1.5rem",
+            }}
+          >
+            {filtered.map((project, i) => (
+              <ProjectCard key={project.id} project={project} index={i} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </SectionWrapper>
   );
 }

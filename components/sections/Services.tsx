@@ -1,86 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SectionWrapper, {
-  SectionHeading,
-  fadeUpVariants,
-} from "@/components/shared/SectionWrapper";
-import {
-  Globe,
-  Server,
-  Palette,
-  Layers,
-  ArrowRight,
-} from "lucide-react";
+import SectionWrapper, { SectionHeading, fadeUpVariants } from "@/components/shared/SectionWrapper";
+import { Globe, Server, Palette, Layers, ArrowRight } from "lucide-react";
 
 const services = [
   {
     id: "web-dev",
     icon: Globe,
     title: "Web Development",
-    description:
-      "End-to-end web application development using modern frameworks like Next.js and React — fast, accessible, and SEO-optimized.",
-    features: [
-      "Next.js / React applications",
-      "Responsive & mobile-first design",
-      "Performance optimization",
-      "SEO best practices",
-    ],
-    gradient: "from-brand-red/20 to-rose-500/10",
-    iconBg: "bg-brand-red/20",
-    iconColor: "text-brand-red",
-    border: "hover:border-brand-red/30",
+    description: "End-to-end web application development using modern frameworks like Next.js and React — fast, accessible, and SEO-optimized.",
+    features: ["Next.js / React applications", "Responsive & mobile-first design", "Performance optimization", "SEO best practices"],
+    accentColor: "#E11D48",
+    gradient: "linear-gradient(135deg,rgba(225,29,72,0.12),rgba(251,113,133,0.05))",
+    iconBg: "rgba(225,29,72,0.15)",
+    hoverBorder: "rgba(225,29,72,0.35)",
   },
   {
     id: "backend-api",
     icon: Server,
     title: "Backend & API Development",
-    description:
-      "Scalable REST & GraphQL APIs, database design, authentication systems, and cloud deployments that power your product.",
-    features: [
-      "REST / GraphQL API design",
-      "Authentication & authorization",
-      "Database modeling",
-      "Cloud deployment & CI/CD",
-    ],
-    gradient: "from-blue-500/15 to-indigo-500/10",
-    iconBg: "bg-blue-500/20",
-    iconColor: "text-blue-400",
-    border: "hover:border-blue-500/30",
+    description: "Scalable REST & GraphQL APIs, database design, authentication systems, and cloud deployments that power your product.",
+    features: ["REST / GraphQL API design", "Authentication & authorization", "Database modeling", "Cloud deployment & CI/CD"],
+    accentColor: "#60a5fa",
+    gradient: "linear-gradient(135deg,rgba(59,130,246,0.12),rgba(99,102,241,0.05))",
+    iconBg: "rgba(59,130,246,0.15)",
+    hoverBorder: "rgba(59,130,246,0.35)",
   },
   {
     id: "ui-ux",
     icon: Palette,
     title: "UI/UX Design",
-    description:
-      "Designing intuitive, visually stunning interfaces that users love. Turning wireframes into polished, interactive experiences.",
-    features: [
-      "Figma wireframes & prototypes",
-      "Component system design",
-      "Micro-interaction design",
-      "Accessibility (WCAG)",
-    ],
-    gradient: "from-purple-500/15 to-pink-500/10",
-    iconBg: "bg-purple-500/20",
-    iconColor: "text-purple-400",
-    border: "hover:border-purple-500/30",
+    description: "Designing intuitive, visually stunning interfaces that users love. Turning wireframes into polished, interactive experiences.",
+    features: ["Figma wireframes & prototypes", "Component system design", "Micro-interaction design", "Accessibility (WCAG)"],
+    accentColor: "#c084fc",
+    gradient: "linear-gradient(135deg,rgba(168,85,247,0.12),rgba(236,72,153,0.05))",
+    iconBg: "rgba(168,85,247,0.15)",
+    hoverBorder: "rgba(168,85,247,0.35)",
   },
   {
     id: "system-design",
     icon: Layers,
     title: "System Design",
-    description:
-      "Architecting scalable, maintainable systems from the ground up — microservices, event-driven designs, and cloud-native solutions.",
-    features: [
-      "Architecture planning",
-      "Scalability consulting",
-      "Tech stack selection",
-      "Code reviews & audits",
-    ],
-    gradient: "from-green-500/15 to-teal-500/10",
-    iconBg: "bg-green-500/20",
-    iconColor: "text-green-400",
-    border: "hover:border-green-500/30",
+    description: "Architecting scalable, maintainable systems from the ground up — microservices, event-driven designs, and cloud-native solutions.",
+    features: ["Architecture planning", "Scalability consulting", "Tech stack selection", "Code reviews & audits"],
+    accentColor: "#4ade80",
+    gradient: "linear-gradient(135deg,rgba(34,197,94,0.12),rgba(20,184,166,0.05))",
+    iconBg: "rgba(34,197,94,0.15)",
+    hoverBorder: "rgba(34,197,94,0.35)",
   },
 ];
 
@@ -88,25 +55,32 @@ export default function Services() {
   return (
     <SectionWrapper
       id="services"
-      className="section-padding bg-brand-surface relative overflow-hidden"
+      className="section-padding"
+      style={{ backgroundColor: "#111113", position: "relative", overflow: "hidden" }}
     >
-      <div className="absolute inset-0 bg-red-glow opacity-30 pointer-events-none" />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "radial-gradient(circle at 50% 50%, rgba(225,29,72,0.06) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="section-container">
         <SectionHeading
           badge="Services"
-          title={
-            <>
-              What I Can <span className="gradient-text">Do For You</span>
-            </>
-          }
+          title={<>What I Can <span className="gradient-text">Do For You</span></>}
           subtitle="From idea to deployment — I deliver complete solutions tailored to your needs."
           center
         />
 
-        <motion.div
-          variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gap: "1.5rem",
+          }}
         >
           {services.map((service) => (
             <motion.div
@@ -114,29 +88,67 @@ export default function Services() {
               id={service.id}
               variants={fadeUpVariants}
               whileHover={{ y: -6, scale: 1.01 }}
-              className={`glass-card rounded-2xl overflow-hidden border border-white/5 ${service.border} transition-all duration-300 cursor-default group`}
+              className="glass-card"
+              style={{
+                borderRadius: "1rem",
+                overflow: "hidden",
+                border: "1px solid rgba(255,255,255,0.06)",
+                cursor: "default",
+                transition: "border-color 0.3s, transform 0.3s",
+              }}
+              onHoverStart={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = service.hoverBorder;
+              }}
+              onHoverEnd={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
+              }}
             >
-              {/* Top gradient strip */}
-              <div className={`bg-gradient-to-br ${service.gradient} p-6`}>
+              {/* Top strip */}
+              <div style={{ background: service.gradient, padding: "1.75rem 1.75rem 1.25rem" }}>
                 <div
-                  className={`w-14 h-14 rounded-2xl ${service.iconBg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                  style={{
+                    width: "3.5rem",
+                    height: "3.5rem",
+                    borderRadius: "0.875rem",
+                    backgroundColor: service.iconBg,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "1rem",
+                  }}
                 >
-                  <service.icon className={`w-7 h-7 ${service.iconColor}`} />
+                  <service.icon style={{ width: "1.6rem", height: "1.6rem", color: service.accentColor }} />
                 </div>
-                <h3 className="font-display text-xl font-bold text-white">
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.15rem",
+                    fontWeight: 700,
+                    color: "#fff",
+                  }}
+                >
                   {service.title}
                 </h3>
               </div>
 
               {/* Content */}
-              <div className="p-6 pt-4">
-                <p className="text-brand-text text-sm leading-relaxed mb-5">
+              <div style={{ padding: "1.25rem 1.75rem 1.75rem" }}>
+                <p style={{ color: "#A1A1AA", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1.25rem" }}>
                   {service.description}
                 </p>
-                <ul className="space-y-2.5">
+                <ul style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
                   {service.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-white/80">
-                      <ArrowRight className={`w-3.5 h-3.5 flex-shrink-0 ${service.iconColor}`} />
+                    <li
+                      key={f}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        fontSize: "0.875rem",
+                        color: "rgba(255,255,255,0.8)",
+                      }}
+                    >
+                      <ArrowRight style={{ width: "0.875rem", height: "0.875rem", flexShrink: 0, color: service.accentColor }} />
                       {f}
                     </li>
                   ))}
@@ -144,16 +156,13 @@ export default function Services() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* CTA */}
-        <motion.div
-          variants={fadeUpVariants}
-          className="mt-14 text-center"
-        >
-          <p className="text-brand-text mb-5">
+        <motion.div variants={fadeUpVariants} style={{ marginTop: "4rem", textAlign: "center" }}>
+          <p style={{ color: "#A1A1AA", marginBottom: "1.5rem", fontSize: "1rem" }}>
             Need something custom?{" "}
-            <span className="text-white">Let&apos;s talk.</span>
+            <span style={{ color: "#fff" }}>Let&apos;s talk.</span>
           </p>
           <motion.a
             href="#contact"
@@ -163,10 +172,22 @@ export default function Services() {
             }}
             whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(225,29,72,0.4)" }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-red text-white font-bold hover:bg-brand-red-dark transition-colors"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "1rem 2.25rem",
+              borderRadius: "0.75rem",
+              backgroundColor: "#E11D48",
+              color: "#fff",
+              fontWeight: 700,
+              fontSize: "1rem",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
           >
             Start a Project
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight style={{ width: "1rem", height: "1rem" }} />
           </motion.a>
         </motion.div>
       </div>
