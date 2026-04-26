@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Moon, Sun, Menu, X, Code2 } from "lucide-react";
-import { useTheme } from "@/components/ThemeProvider";
+import { Menu, X, Code2 } from "lucide-react";
 
 const navLinks = [
   { label: "About",      href: "#about" },
@@ -18,7 +17,6 @@ export default function Navbar() {
   const [scrolled, setScrolled]       = useState(false);
   const [mobileOpen, setMobileOpen]   = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,20 +88,7 @@ export default function Navbar() {
               textDecoration: "none",
             }}
           >
-            <div
-              style={{
-                width: "2rem",
-                height: "2rem",
-                borderRadius: "0.5rem",
-                backgroundColor: "#E11D48",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-              }}
-            >
-              <Code2 style={{ width: "1rem", height: "1rem", color: "#fff" }} />
-            </div>
+            
             <span style={{ color: "#fff" }}>Aakash</span>
             <span style={{ color: "#E11D48" }}>Yadav</span>
           </motion.a>
@@ -150,31 +135,6 @@ export default function Navbar() {
 
           {/* Right actions */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            {/* Theme toggle */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleTheme}
-              className="glass"
-              style={{
-                width: "2.25rem",
-                height: "2.25rem",
-                borderRadius: "0.5rem",
-                border: "1px solid rgba(255,255,255,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#A1A1AA",
-                cursor: "pointer",
-                background: "transparent",
-              }}
-              aria-label="Toggle theme"
-            >
-              {theme === "dark"
-                ? <Sun  style={{ width: "1rem", height: "1rem" }} />
-                : <Moon style={{ width: "1rem", height: "1rem" }} />}
-            </motion.button>
-
             {/* Hire me */}
             <motion.a
               href="#contact"

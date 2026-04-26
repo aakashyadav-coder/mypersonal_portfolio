@@ -61,8 +61,8 @@ export function SectionHeading({
   return (
     <motion.div
       variants={fadeUpVariants}
+      className="section-heading"
       style={{
-        marginBottom: "2.5rem",
         textAlign: center ? "center" : "left",
       }}
     >
@@ -75,7 +75,7 @@ export function SectionHeading({
             borderRadius: "9999px",
             fontSize: "0.68rem",
             fontWeight: 700,
-            letterSpacing: "0.12em",
+            letterSpacing: 0,
             textTransform: "uppercase" as const,
             border: "1px solid rgba(225,29,72,0.35)",
             color: "#E11D48",
@@ -86,19 +86,20 @@ export function SectionHeading({
         </span>
       )}
       <h2
+        className="section-heading-title"
         style={{
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
           fontWeight: 700,
           color: "#fff",
           lineHeight: 1.15,
-          letterSpacing: "-0.02em",
+          letterSpacing: 0,
         }}
       >
         {title}
       </h2>
       {subtitle && (
         <p
+          className="section-heading-subtitle"
           style={{
             marginTop: "1rem",
             color: "#A1A1AA",

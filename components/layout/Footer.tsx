@@ -6,8 +6,8 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const socials = [
   { icon: FaGithub,   href: "https://github.com/aakashyadav",       label: "GitHub" },
-  { icon: FaLinkedin, href: "https://linkedin.com/in/aakashyadav",  label: "LinkedIn" },
-  { icon: Mail,       href: "mailto:aakash@aakashyadav.dev",        label: "Email" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/in/aakash-yadav-87118b348/",  label: "LinkedIn" },
+  { icon: Mail,       href: "mailto:aakashyadav94486@gmail.com",    label: "Email" },
 ];
 
 const navLinks = [

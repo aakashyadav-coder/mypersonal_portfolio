@@ -1,5 +1,4 @@
 
-import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -16,7 +15,7 @@ import CustomCursor from "@/components/effects/CustomCursor";
 
 export default function Home() {
   return (
-    <ThemeProvider>
+    <>
       {/* Loading screen */}
       <PageLoader />
 
@@ -40,6 +39,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-    </ThemeProvider>
+    </>
   );
 }

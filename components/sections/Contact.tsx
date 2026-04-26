@@ -3,13 +3,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import SectionWrapper, { SectionHeading, fadeUpVariants } from "@/components/shared/SectionWrapper";
-import { Send, Mail, MapPin, Clock, CheckCircle, Loader2 } from "lucide-react";
+import { Send, Mail, Phone, MapPin, Clock, CheckCircle, Loader2 } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const contactInfo = [
-  { icon: Mail,       label: "Email",       value: "aakash@aakashyadav.dev", href: "mailto:aakash@aakashyadav.dev", color: "#E11D48" },
-  { icon: FaGithub,   label: "GitHub",      value: "@aakashyadav",           href: "https://github.com/aakashyadav",         color: "#fff" },
-  { icon: FaLinkedin, label: "LinkedIn",    value: "Aakash Yadav",          href: "https://linkedin.com/in/aakashyadav",     color: "#60a5fa" },
+  { icon: Mail,       label: "Email",       value: "aakashyadav94486@gmail.com", href: "mailto:aakashyadav94486@gmail.com", color: "#E11D48" },
+  { icon: Phone,      label: "Contact",     value: "+977-9815253061",       href: "tel:+9779815253061",                  color: "#38bdf8" },
+  { icon: FaGithub,   label: "GitHub",      value: "@aakashyadav",           href: "https://github.com/aakashyadav-coder",         color: "#fff" },
+  { icon: FaLinkedin, label: "LinkedIn",    value: "Aakash Yadav",          href: "https://www.linkedin.com/in/aakash-yadav-87118b348/",     color: "#60a5fa" },
   { icon: MapPin,     label: "Location",    value: "Nepal",                  href: null,                                       color: "#4ade80" },
   { icon: Clock,      label: "Availability",value: "Open for new projects",  href: null,                                       color: "#fbbf24" },
 ];
@@ -47,7 +48,7 @@ export default function Contact() {
     e.preventDefault();
     setFormState("loading");
     await new Promise((r) => setTimeout(r, 1500));
-    const mailtoLink = `mailto:aakash@aakashyadav.dev?subject=${encodeURIComponent(form.subject || "Portfolio Contact")}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
+    const mailtoLink = `mailto:aakashyadav94486@gmail.com?subject=${encodeURIComponent(form.subject || "Portfolio Contact")}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
     window.open(mailtoLink, "_blank");
     setFormState("success");
   };

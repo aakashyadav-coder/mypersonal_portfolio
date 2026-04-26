@@ -11,11 +11,11 @@ export default function CustomCursor() {
 
   useEffect(() => {
     if (window.innerWidth < 768) return;
-    setIsDesktop(true);
+    const desktopTimer = window.setTimeout(() => setIsDesktop(true), 0);
 
     const handleMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
     };
 
     const handleOver = (e: MouseEvent) => {
@@ -34,12 +34,13 @@ export default function CustomCursor() {
     document.documentElement.addEventListener("mouseenter", handleEnter);
 
     return () => {
+      window.clearTimeout(desktopTimer);
       window.removeEventListener("mousemove", handleMove);
       window.removeEventListener("mouseover", handleOver);
       document.documentElement.removeEventListener("mouseleave", handleLeave);
       document.documentElement.removeEventListener("mouseenter", handleEnter);
     };
-  }, [isVisible]);
+  }, []);
 
   if (!isDesktop) return null;
 

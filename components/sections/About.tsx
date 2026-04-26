@@ -62,18 +62,19 @@ export default function About() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr",
-            gap: "5rem",
-            alignItems: "center",
+            gap: "3.5rem",
+            alignItems: "start",
           }}
           className="about-grid"
         >
           {/* Left — Avatar */}
-          <motion.div variants={fadeUpVariants} style={{ position: "relative" }}>
+          <motion.div className="about-portrait-col" variants={fadeUpVariants} style={{ position: "relative" }}>
             <div
+              className="about-avatar-shell"
               style={{
                 position: "relative",
                 width: "100%",
-                maxWidth: "20rem",
+                maxWidth: "21rem",
                 margin: "0 auto",
                 aspectRatio: "1",
               }}
@@ -153,9 +154,9 @@ export default function About() {
 
               {/* Floating badges */}
               <motion.div
+                className="about-floating-badge glass-card"
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="glass-card"
                 style={{
                   position: "absolute",
                   bottom: "-1rem",
@@ -166,13 +167,13 @@ export default function About() {
                 }}
               >
                 <p style={{ fontSize: "0.7rem", color: "#A1A1AA" }}>Currently</p>
-                <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem" }}>Open to work ✨</p>
+                <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem" }}>Open to work</p>
               </motion.div>
 
               <motion.div
+                className="about-floating-badge glass-card"
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 3.5, repeat: Infinity, delay: 1 }}
-                className="glass-card"
                 style={{
                   position: "absolute",
                   top: "-1rem",
@@ -183,13 +184,13 @@ export default function About() {
                 }}
               >
                 <p style={{ fontSize: "0.7rem", color: "#A1A1AA" }}>Experience</p>
-                <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem" }}>2+ Years 🚀</p>
+                <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem" }}>2+ Years</p>
               </motion.div>
             </div>
           </motion.div>
 
           {/* Right — Content */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          <div className="about-content" style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
             <SectionHeading
               badge="About Me"
               title={<>Building Digital <span className="gradient-text">Experiences</span></>}
@@ -216,7 +217,7 @@ export default function About() {
               </p>
               <p>
                 I specialize in full-stack development using modern tools like{" "}
-                <span style={{ color: "#FAFAFA" }}>React, Next.js, and Node.js</span> — always with an
+                <span style={{ color: "#FAFAFA" }}>React, Next.js, and Node.js</span> - always with an
                 eye for clean code, performance, and developer experience.
               </p>
               <p>
@@ -266,6 +267,7 @@ export default function About() {
             {/* Stats grid */}
             <motion.div
               variants={fadeUpVariants}
+              className="about-stats-grid"
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
@@ -308,9 +310,47 @@ export default function About() {
 
       {/* Responsive grid CSS */}
       <style>{`
+        .about-portrait-col {
+          align-self: start;
+        }
+
+        .about-avatar-shell {
+          width: min(100%, 21rem);
+        }
+
         @media (min-width: 1024px) {
           .about-grid {
-            grid-template-columns: 1fr 1fr !important;
+            grid-template-columns: 0.9fr 1.1fr !important;
+            gap: 4rem !important;
+            align-items: start !important;
+          }
+
+          .about-portrait-col {
+            transform: translateY(-1.75rem);
+          }
+
+          .about-avatar-shell {
+            margin-left: 0 !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .about-grid {
+            gap: 3rem !important;
+          }
+
+          .about-avatar-shell {
+            max-width: 18rem !important;
+          }
+
+          .about-floating-badge {
+            padding: 0.65rem 0.8rem !important;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .about-stats-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

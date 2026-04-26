@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import SectionWrapper, { SectionHeading, fadeUpVariants } from "@/components/shared/SectionWrapper";
 import { Briefcase, Calendar, MapPin, CheckCircle } from "lucide-react";

@@ -35,7 +35,7 @@ const projects: Project[] = [
   {
     id: 2,
     title: "Developer Portfolio v2",
-    description: "This portfolio website — built with Next.js, Tailwind CSS, Framer Motion, and TypeScript. Features dark/light mode, smooth animations, and fully responsive design.",
+    description: "This portfolio website — built with Next.js, Tailwind CSS, Framer Motion, and TypeScript. Features smooth animations, refined sections, and fully responsive design.",
     tags: ["Next.js", "Tailwind", "Framer Motion", "TypeScript"],
     category: "Frontend",
     featured: true,

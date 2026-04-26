@@ -12,11 +12,11 @@ const ParticleBackground = dynamic(
 );
 
 const roles = [
-  "Software Developer",
-  "Full-Stack Engineer",
-  "Web Developer",
-  "API Architect",
-  "UI/UX Enthusiast",
+  "Full-Stack Developer",
+  "Next.js Developer",
+  "React Engineer",
+  "API Integration Specialist",
+  "Product-Minded Builder",
 ];
 
 function TypewriterText({ texts }: { texts: string[] }) {
@@ -30,8 +30,10 @@ function TypewriterText({ texts }: { texts: string[] }) {
     if (!deleting && text === current) {
       timeout = setTimeout(() => setDeleting(true), 2000);
     } else if (deleting && text === "") {
-      setDeleting(false);
-      setIndex((prev) => (prev + 1) % texts.length);
+      timeout = setTimeout(() => {
+        setDeleting(false);
+        setIndex((prev) => (prev + 1) % texts.length);
+      }, 120);
     } else {
       timeout = setTimeout(
         () =>
@@ -53,7 +55,7 @@ function TypewriterText({ texts }: { texts: string[] }) {
         style={{
           display: "inline-block",
           width: "2px",
-          height: "2rem",
+          height: "1.25em",
           backgroundColor: "#E11D48",
           marginLeft: "4px",
           verticalAlign: "middle",
@@ -81,15 +83,17 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      className="hero-section"
       style={{
         position: "relative",
-        minHeight: "100vh",
+        minHeight: "100svh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
         backgroundColor: "#0A0A0B",
+        padding: "7rem 0 5rem",
       }}
     >
       <ParticleBackground />
@@ -131,7 +135,7 @@ export default function Hero() {
       {/* Content */}
       <div
         className="section-container"
-        style={{ position: "relative", zIndex: 10, textAlign: "center" }}
+        style={{ position: "relative", zIndex: 10, textAlign: "center", width: "100%" }}
       >
         <motion.div variants={containerVariants} initial="hidden" animate="visible">
           {/* Available badge */}
@@ -158,36 +162,36 @@ export default function Hero() {
                   animation: "pulse 2s infinite",
                 }}
               />
-              Available for opportunities
+              Available for freelance and full-time work
             </span>
           </motion.div>
 
           {/* Name */}
           <motion.h1
             variants={itemVariants}
+            className="hero-title"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(3rem, 8vw, 6rem)",
               fontWeight: 800,
-              letterSpacing: "-0.03em",
-              lineHeight: 1.05,
+              letterSpacing: 0,
+              lineHeight: 1.02,
             }}
           >
-            <span style={{ color: "#FFFFFF", display: "block" }}>Hi, I&apos;m</span>
+            <span style={{ color: "#FFFFFF", display: "block" }}>Aakash Yadav</span>
             <span className="gradient-text-white" style={{ display: "block", marginTop: "0.5rem" }}>
-              Aakash Yadav
+              Software &amp; Web Developer
             </span>
           </motion.h1>
 
           {/* Role typewriter */}
           <motion.div
             variants={itemVariants}
+            className="hero-role"
             style={{
               marginTop: "1.25rem",
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.35rem, 3.5vw, 2.25rem)",
               fontWeight: 600,
-              letterSpacing: "-0.01em",
+              letterSpacing: 0,
             }}
           >
             <TypewriterText texts={roles} />
@@ -196,25 +200,27 @@ export default function Hero() {
           {/* Tagline */}
           <motion.p
             variants={itemVariants}
+            className="hero-copy"
             style={{
               marginTop: "1.5rem",
               color: "#A1A1AA",
               fontSize: "1.05rem",
-              maxWidth: "580px",
+              maxWidth: "640px",
               marginLeft: "auto",
               marginRight: "auto",
               lineHeight: 1.75,
               fontFamily: "var(--font-sans)",
             }}
           >
-            Crafting{" "}
-            <span style={{ color: "#FAFAFA", fontWeight: 600 }}>scalable web experiences</span>{" "}
-            with modern technologies — from pixel-perfect UIs to rock-solid APIs.
+            I design and build{" "}
+            <span style={{ color: "#FAFAFA", fontWeight: 600 }}>fast, responsive, production-ready web apps</span>{" "}
+            with clean interfaces, reliable APIs, and a focus on real business outcomes.
           </motion.p>
 
           {/* Stats */}
           <motion.div
             variants={itemVariants}
+            className="hero-stats"
             style={{
               marginTop: "3rem",
               display: "flex",
@@ -228,7 +234,7 @@ export default function Hero() {
               { value: "15+", label: "Projects Delivered" },
               { value: "5+", label: "Technologies" },
             ].map((stat) => (
-              <div key={stat.label} style={{ textAlign: "center" }}>
+              <div key={stat.label} className="hero-stat" style={{ textAlign: "center" }}>
                 <div
                   className="gradient-text"
                   style={{
@@ -245,7 +251,7 @@ export default function Hero() {
                     color: "#A1A1AA",
                     marginTop: "0.25rem",
                     textTransform: "uppercase",
-                    letterSpacing: "0.1em",
+                    letterSpacing: 0,
                   }}
                 >
                   {stat.label}
@@ -257,6 +263,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
+            className="hero-actions"
             style={{
               marginTop: "3rem",
               display: "flex",
@@ -355,7 +362,7 @@ export default function Hero() {
             {[
               { icon: FaGithub, href: "https://github.com/aakashyadav", label: "GitHub" },
               { icon: FaLinkedin, href: "https://linkedin.com/in/aakashyadav", label: "LinkedIn" },
-              { icon: Mail, href: "mailto:aakash@aakashyadav.dev", label: "Email" },
+              { icon: Mail, href: "mailto:aakashyadav94486@gmail.com", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <motion.a
                 key={label}
@@ -389,6 +396,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.button
+        className="hero-scroll"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
@@ -410,13 +418,95 @@ export default function Hero() {
         }}
         aria-label="Scroll down"
       >
-        <span style={{ fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+        <span style={{ fontSize: "0.75rem", letterSpacing: 0, textTransform: "uppercase" }}>
           Scroll
         </span>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
           <ArrowDown style={{ width: "1.25rem", height: "1.25rem" }} />
         </motion.div>
       </motion.button>
+
+      <style>{`
+        .hero-title {
+          font-size: 3rem;
+        }
+
+        .hero-role {
+          font-size: 1.2rem;
+          min-height: 2.1rem;
+        }
+
+        .hero-copy {
+          text-wrap: balance;
+        }
+
+        .hero-stats {
+          row-gap: 1.25rem !important;
+        }
+
+        @media (min-width: 640px) {
+          .hero-title {
+            font-size: 4.25rem;
+          }
+
+          .hero-role {
+            font-size: 1.55rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .hero-title {
+            font-size: 5.6rem;
+          }
+
+          .hero-role {
+            font-size: 2rem;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero-section {
+            min-height: 100svh !important;
+            padding-top: 6.25rem !important;
+            padding-bottom: 4.25rem !important;
+          }
+
+          .hero-actions {
+            width: 100%;
+            margin-top: 2.25rem !important;
+          }
+
+          .hero-actions a {
+            width: 100%;
+            max-width: 20rem;
+            justify-content: center;
+          }
+
+          .hero-stats {
+            width: 100%;
+            gap: 1rem !important;
+          }
+
+          .hero-stat {
+            flex: 1 1 7.5rem;
+          }
+
+          .hero-scroll {
+            display: none !important;
+          }
+        }
+
+        @media (max-height: 760px) and (min-width: 768px) {
+          .hero-section {
+            padding-top: 6.5rem !important;
+            padding-bottom: 4rem !important;
+          }
+
+          .hero-scroll {
+            display: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
